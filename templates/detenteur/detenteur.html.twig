@@ -1,0 +1,93 @@
+{% extends 'template.html.twig' %}
+
+{% block title %} Controller | Detenteurs {% endblock %}
+
+{% block body %}
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Liste des Detenteurs</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Detenteurs</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <!-- /.row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Liste des detenteurs</h3>
+
+                <div class="card-tools">
+                  <div class="input-group input-group-sm" style="width: 150px;">
+                    <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
+
+                    <div class="input-group-append">
+                      <button type="submit" class="btn btn-default">
+                        <i class="fas fa-search"></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                  <thead>
+                    <tr>
+                      <th>Noms</th>
+                      <th>Sexe</th>
+                      <th>Marque</th>
+                      <th>Type</th>
+                      <th>Categorie</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for detenteur in detenteurs %}
+                      <tr>
+                        <td>{{ detenteur.nom }} {{ detenteur.postnom }} {{ detenteur.prenom }}</td>
+                        <td>{{ detenteur.sexe }}</td>
+                        <td>{{ detenteur.marque }}</td>
+                        <td><span class="tag tag-success">{{ detenteur.type }}</span></td>
+                        <td>{{ detenteur.categorie }}</td>
+                        <td>
+                          <button type="button" class="btn btn-block btn-dark">Dark</button>
+                          <button type="button" class="btn btn-block btn-dark">Dark</button>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <div class="col-2">
+            <button type="button" class="btn btn-block btn-dark">Ajouter</button>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+ 
+  {% endblock %}

@@ -33,10 +33,10 @@ class Detenteur
     private ?string $marque = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $modele = null;
+    private ?string $type = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $type = null;
+    private ?string $categorie = null;
 
     #[ORM\Column]
     private ?int $poids = null;
@@ -124,18 +124,6 @@ class Detenteur
         return $this;
     }
 
-    public function getModele(): ?string
-    {
-        return $this->modele;
-    }
-
-    public function setModele(string $modele): static
-    {
-        $this->modele = $modele;
-
-        return $this;
-    }
-
     public function getType(): ?string
     {
         return $this->type;
@@ -144,6 +132,18 @@ class Detenteur
     public function setType(string $type): static
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getCategorie(): ?string
+    {
+        return $this->categorie;
+    }
+
+    public function setCategorie(string $categorie): static
+    {
+        $this->categorie = $categorie;
 
         return $this;
     }

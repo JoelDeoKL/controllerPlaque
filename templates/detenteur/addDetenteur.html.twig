@@ -1,0 +1,215 @@
+ {% extends 'template.html.twig' %}
+
+{% block title %} Controller | Detenteurs {% endblock %}
+
+{% block body %}
+ 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Formulaire d'ajout de detenteur</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Formulaire</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Ajouter Detenteur</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {{ form_start(form) }}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.nom) }}
+                                {{ form_widget(form.nom, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre nom'
+                                }}) }}
+                                
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.postnom) }}
+                                {{ form_widget(form.postnom, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre postnomd'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.prenom) }}
+                                {{ form_widget(form.prenom, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre prenom'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.adresse) }}
+                                {{ form_widget(form.adresse, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre adresse'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="dateNaissance">Date de naissance</label>
+                                <input type="date" class="form-control" id="dateNaissance">
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Sexe</label>
+                                <select class="form-control">
+                                    <option>Masculin</option>
+                                    <option>Feminin</option>
+                                    <option>Autres</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.marque) }}
+                                {{ form_widget(form.marque, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre marque'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.type) }}
+                                {{ form_widget(form.type, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre type'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.poids) }}
+                                {{ form_widget(form.poids, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre poids'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.couleur) }}
+                                {{ form_widget(form.couleur, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre couleur'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.plaque) }}
+                                {{ form_widget(form.plaque, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre plaque'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.telephone) }}
+                                {{ form_widget(form.telephone, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre telephone'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label>Categorie</label>
+                                <select class="form-control">
+                                    <option>Petit</option>
+                                    <option>Moyenne</option>
+                                    <option>Lourd</option>
+                                    <option>Poids Lourd</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                <label for="photo">Photo</label>
+                                <div class="input-group">
+                                <div class="custom-file">
+                                    {{ form_widget(form.photo, {'attr': {
+                                        'class':'custom-file-input',
+                                    }}) }}
+                                    <label class="custom-file-label" for="photo">Selectionnez votre photo</label>
+                                </div>
+                                <div class="input-group-append">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer"> 
+                    {{ form_widget(form.editer, {'attr': {'class':'btn btn-primary'}}) }}
+                </div>
+              
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+{% endblock %}

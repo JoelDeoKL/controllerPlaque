@@ -17,9 +17,6 @@ class Vignette
     private ?string $code = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $numPlaque = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $marque = null;
 
     #[ORM\Column(length: 255)]
@@ -34,6 +31,9 @@ class Vignette
     #[ORM\Column(length: 255)]
     private ?string $reference = null;
 
+    #[ORM\ManyToOne(inversedBy: 'vignettes')]
+    private ?Detenteur $numPlaque = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -47,18 +47,6 @@ class Vignette
     public function setCode(string $code): static
     {
         $this->code = $code;
-
-        return $this;
-    }
-
-    public function getNumPlaque(): ?string
-    {
-        return $this->numPlaque;
-    }
-
-    public function setNumPlaque(string $numPlaque): static
-    {
-        $this->numPlaque = $numPlaque;
 
         return $this;
     }
@@ -122,4 +110,19 @@ class Vignette
 
         return $this;
     }
+
+    public function getNumPlaque(): ?Detenteur
+    {
+        return $this->numPlaque;
+    }
+
+    public function setNumPlaque(?Detenteur $numPlaque): static
+    {
+        $this->numPlaque = $numPlaque;
+
+        return $this;
+    }
+
+
+    
 }

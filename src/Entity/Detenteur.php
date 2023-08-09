@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\DetenteurRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -55,6 +57,14 @@ class Detenteur
 
     #[ORM\Column(length: 255)]
     private ?string $adresse = null;
+
+    #[ORM\OneToMany(mappedBy: 'numPlaque', targetEntity: Vignette::class)]
+    private Collection $vignettes;
+
+    public function __construct()
+    {
+        $this->vignettes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -225,6 +235,36 @@ class Detenteur
     public function setAdresse(string $adresse): static
     {
         $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Vignette>
+     */
+    public function getVignettes(): Collection
+    {
+        return $this->vignettes;
+    }
+
+    public function addVignette(Vignette $vignette): static
+    {
+        if (!$this->vignettes->contains($vignette)) {
+            $this->vignettes->add($vignette);
+            $vignette->setNumPlaque($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVignette(Vignette $vignette): static
+    {
+        if ($this->vignettes->removeElement($vignette)) {
+            // set the owning side to null (unless already changed)
+            if ($vignette->getNumPlaque() === $this) {
+                $vignette->setNumPlaque(null);
+            }
+        }
 
         return $this;
     }

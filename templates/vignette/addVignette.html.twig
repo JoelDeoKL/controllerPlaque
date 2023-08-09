@@ -1,0 +1,156 @@
+ {% extends 'template.html.twig' %}
+
+{% block title %} Controller | Vignettes {% endblock %}
+
+{% block body %}
+ 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Formulaire d'ajout de vignette</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Formulaire</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Ajouter Vignette</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {{ form_start(form) }}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.code) }}
+                                {{ form_widget(form.code, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le code'
+                                }}) }}
+                                
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.numPlaque) }}
+                                {{ form_widget(form.numPlaque, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le numéro de la plaque'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.marque) }}
+                                {{ form_widget(form.marque, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez la marque'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.type) }}
+                                {{ form_widget(form.type, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le type'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.marque) }}
+                                {{ form_widget(form.marque, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le marque'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.type) }}
+                                {{ form_widget(form.type, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le type'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.montantImpot) }}
+                                {{ form_widget(form.montantImpot, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le montantImpot'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.montantTaxe) }}
+                                {{ form_widget(form.montantTaxe, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le montantTaxe'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.reference) }}
+                                {{ form_widget(form.reference, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez la reference'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer"> 
+                    {{ form_widget(form.editer, {'attr': {'class':'btn btn-primary'}}) }}
+                </div>
+              
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+{% endblock %}

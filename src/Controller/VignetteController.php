@@ -8,11 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class VignetteController extends AbstractController
 {
-    #[Route('/vignette', name: 'app_vignette')]
-    public function index(): Response
+    #[Route('/vignettes', name: 'vignettes')]
+    public function vignettes(EntityManagerInterface $entityManager): Response
     {
-        return $this->render('vignette/index.html.twig', [
-            'controller_name' => 'VignetteController',
-        ]);
+        $vignettes = $entityManager->getRepository(Detenteur::class)->findAll();
+
+        return $this->render('vignette/detenteur.html.twig', ['vignettes' => $vignettes]);
     }
 }

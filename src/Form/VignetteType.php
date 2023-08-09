@@ -19,6 +19,7 @@ class VignetteType extends AbstractType
             ->add('montantImpot')
             ->add('taxe')
             ->add('reference')
+            ->add('editer', SubmitType::class)
         ;
     }
 

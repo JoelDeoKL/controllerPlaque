@@ -6,6 +6,7 @@ use App\Entity\Assurance;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AssuranceType extends AbstractType
 {
@@ -21,6 +22,7 @@ class AssuranceType extends AbstractType
             ->add('echeance')
             ->add('chassis')
             ->add('numPlaque')
+            ->add('editer', SubmitType::class)
         ;
     }
 

@@ -84,27 +84,6 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                {{ form_label(form.marque) }}
-                                {{ form_widget(form.marque, {'attr': {
-                                    'class':'required form-control',
-                                    'placeholder' : 'Entrez le marque'
-                                }}) }}
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                {{ form_label(form.type) }}
-                                {{ form_widget(form.type, {'attr': {
-                                    'class':'required form-control',
-                                    'placeholder' : 'Entrez le type'
-                                }}) }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
                                 {{ form_label(form.montantImpot) }}
                                 {{ form_widget(form.montantImpot, {'attr': {
                                     'class':'required form-control',
@@ -114,8 +93,8 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                {{ form_label(form.montantTaxe) }}
-                                {{ form_widget(form.montantTaxe, {'attr': {
+                                {{ form_label(form.taxe) }}
+                                {{ form_widget(form.taxe, {'attr': {
                                     'class':'required form-control',
                                     'placeholder' : 'Entrez le montantTaxe'
                                 }}) }}
@@ -125,12 +104,14 @@
 
                     <div class="row">
                         <div class="col-6">
-                            <div class="form-group">
-                                {{ form_label(form.reference) }}
-                                {{ form_widget(form.reference, {'attr': {
-                                    'class':'required form-control',
-                                    'placeholder' : 'Entrez la reference'
-                                }}) }}
+                            <div class="col-6">
+                                <div class="form-group">
+                                    {{ form_label(form.reference) }}
+                                    {{ form_widget(form.reference, {'attr': {
+                                        'class':'required form-control',
+                                        'placeholder' : 'Entrez la reference'
+                                    }}) }}
+                                </div>
                             </div>
                         </div>
                     </div>

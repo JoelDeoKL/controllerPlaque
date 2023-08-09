@@ -66,8 +66,7 @@ class DetenteurController extends AbstractController
             $manager = $doctrine->getManager();
             $manager->persist($detenteur);
 
-            dd($manager);
-            //$manager->flush();
+            $manager->flush();
 
             if($new){
                 $message = " a été ajouter avec succès";

@@ -64,10 +64,14 @@ class Detenteur
     #[ORM\OneToMany(mappedBy: 'numPlaque', targetEntity: Assurance::class)]
     private Collection $assurances;
 
+    #[ORM\OneToMany(mappedBy: 'numPlaque', targetEntity: ControleTech::class)]
+    private Collection $controleTeches;
+
     public function __construct()
     {
         $this->vignettes = new ArrayCollection();
         $this->assurances = new ArrayCollection();
+        $this->controleTeches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -297,6 +301,36 @@ class Detenteur
             // set the owning side to null (unless already changed)
             if ($assurance->getNumPlaque() === $this) {
                 $assurance->setNumPlaque(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ControleTech>
+     */
+    public function getControleTeches(): Collection
+    {
+        return $this->controleTeches;
+    }
+
+    public function addControleTech(ControleTech $controleTech): static
+    {
+        if (!$this->controleTeches->contains($controleTech)) {
+            $this->controleTeches->add($controleTech);
+            $controleTech->setNumPlaque($this);
+        }
+
+        return $this;
+    }
+
+    public function removeControleTech(ControleTech $controleTech): static
+    {
+        if ($this->controleTeches->removeElement($controleTech)) {
+            // set the owning side to null (unless already changed)
+            if ($controleTech->getNumPlaque() === $this) {
+                $controleTech->setNumPlaque(null);
             }
         }
 

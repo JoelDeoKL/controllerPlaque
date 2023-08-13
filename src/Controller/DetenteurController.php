@@ -14,13 +14,17 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DetenteurController extends AbstractController
 {
-    #[Route('/', name: 'app_home')]
+    #[Route('/dashboard', name: 'dashboard')]
     public function index(): Response
     {
         return $this->render('home/index2.html.twig');
     }
 
-
+    #[Route('/', name: 'app_home')]
+    public function controller(): Response
+    {
+        return $this->render('home/simple-results.html.twig');
+    }
     #[Route('/detenteurs', name: 'detenteurs')]
     public function detenteurs(EntityManagerInterface $entityManager): Response
     {

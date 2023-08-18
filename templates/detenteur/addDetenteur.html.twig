@@ -84,18 +84,18 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="dateNaissance">Date de naissance</label>
-                                <input type="date" class="form-control" id="dateNaissance">
+                                {{ form_label(form.date_naissance) }}
+                                {{ form_widget(form.date_naissance, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                <label>Sexe</label>
-                                <select class="form-control">
-                                    <option>Masculin</option>
-                                    <option>Feminin</option>
-                                    <option>Autres</option>
-                                </select>
+                                {{ form_label(form.sexe) }}
+                                {{ form_widget(form.sexe, {'attr': {
+                                    'class':'required form-control',
+                                }}) }}
                             </div>
                         </div>
                     </div>
@@ -166,14 +166,12 @@
 
                     <div class="row">
                         <div class="col-6">
-                            <div class="form-group">
-                                <label>Categorie</label>
-                                <select class="form-control">
-                                    <option>Petit</option>
-                                    <option>Moyenne</option>
-                                    <option>Lourd</option>
-                                    <option>Poids Lourd</option>
-                                </select>
+                           <div class="form-group">
+                                {{ form_label(form.categorie) }}
+                                {{ form_widget(form.categorie, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre telephone'
+                                }}) }}
                             </div>
                         </div>
                         <div class="col-6">

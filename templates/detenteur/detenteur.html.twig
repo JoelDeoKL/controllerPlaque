@@ -51,25 +51,32 @@
                 <table class="table table-hover text-nowrap">
                   <thead>
                     <tr>
-                      <th>Noms</th>
-                      <th>Sexe</th>
-                      <th>Marque</th>
-                      <th>Type</th>
-                      <th>Categorie</th>
-                      <th>Actions</th>
+                      <th width="10">Noms</th>
+                      <th width="10">Sexe</th>
+                      <th width="10">Marque</th>
+                      <th width="10">Categorie</th>
+                      <th width="60">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for detenteur in detenteurs %}
                       <tr>
-                        <td>{{ detenteur.nom }} {{ detenteur.postnom }} {{ detenteur.prenom }}</td>
+                        <td>{{ detenteur.nom }} {{ detenteur.prenom }} </td>
                         <td>{{ detenteur.sexe }}</td>
                         <td>{{ detenteur.marque }}</td>
-                        <td><span class="tag tag-success">{{ detenteur.type }}</span></td>
                         <td>{{ detenteur.categorie }}</td>
                         <td>
-                          <button type="button" class="btn btn-block btn-dark">Dark</button>
-                          <button type="button" class="btn btn-block btn-dark">Dark</button>
+                          <div class="row">
+                            <div class="col-4">
+                              <a href="" class="btn btn-block btn-outline-success">Voir</a>
+                            </div>
+                            <div class="col-4">
+                              <a href="" class="btn btn-block btn-outline-info">Modif</a>
+                            </div>
+                            <div class="col-4">
+                              <a href="" class="btn btn-block btn-outline-danger">Suppr</a>
+                            </div>
+                          </div>
                         </td>
                       </tr>
                     {% endfor %}
@@ -81,11 +88,11 @@
             <!-- /.card -->
           </div>
           <div class="col-2">
-            <button type="button" class="btn btn-block btn-dark">Ajouter</button>
+            <a href="{{ path('ajouterDetenteur') }}" class="btn btn-block btn-dark">Ajouter</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->
-    </section>
+    </section> 
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

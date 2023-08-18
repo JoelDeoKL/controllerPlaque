@@ -63,7 +63,7 @@ class DetenteurController extends AbstractController
                 } catch (FileException $e) {
                 }
 
-                $detenteur->setPathImage($newFilename);
+                $detenteur->setPhoto($newFilename);
             }
 
 

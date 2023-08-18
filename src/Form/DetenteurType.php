@@ -20,10 +20,23 @@ class DetenteurType extends AbstractType
             ->add('postnom')
             ->add('prenom')
             ->add('date_naissance')
-            ->add('sexe')
+            ->add('sexe', ChoiceType::class, [
+                'choices' => [
+                    'Masculin' => 'Masculin',
+                    'Feminin' => 'Feminin',
+                    'Autres' => 'Autres',
+                ],
+            ])
             ->add('marque')
             ->add('type')
-            ->add('categorie')
+            ->add('categorie', ChoiceType::class, [
+                'choices' => [
+                    'Petit' => 'Petit',
+                    'Moyen' => 'Moyen',
+                    'Lourd' => 'Lourd',
+                    'Poids Lourd' => 'Poids Lourd',
+                ],
+            ])
             ->add('adresse')
             ->add('poids')
             ->add('couleur')

@@ -22,8 +22,8 @@ class VignetteController extends AbstractController
         return $this->render('vignette/vignette.html.twig', ['vignettes' => $vignettes]);
     }
 
-    #[Route('/ajouterVignette/{id?0}', name: 'ajouterVignette')]
-    public function ajouterVignette(Vignette $vignette = null, ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
+    #[Route('/editerVignette/{id?0}', name: 'editerVignette')]
+    public function editerVignette(Vignette $vignette = null, ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
     {
         $new = false;
         if(!$vignette){
@@ -55,6 +55,37 @@ class VignetteController extends AbstractController
                 'form' => $form->createView()
             ]);
         }
+    }
+
+    #[Route('/detailVignette/{id?0}', name: 'detailVignette')]
+    public function detailVignette(ManagerRegistry $doctrine, Vignette $vignette = null ): Response
+    {
+        if(!$vignette){
+            $this->addFlash('error', "Cette vignette n'existe pas !");
+            return $this->redirectToRoute("vignettes");
+        }
+        return $this->render('vignette/detailVignette.html.twig', ['vignette' => $vignette]);
+    }
+
+    #[Route('/deleteVignette/{id?0}', name: 'deleteVignette')]
+    public function deleteVignette(Vignette $vignette = null, ManagerRegistry $doctrine, $id): Response
+    {
+
+        $repository = $doctrine->getRepository(Vignette::class);
+        $vignette = $repository->find($id);
+
+        $manager = $doctrine->getManager();
+        $manager->remove($vignette);
+
+        $manager->flush();
+
+        $message = " a été supprimer avec succès";
+
+
+        $this->addFlash("succes", $vignette->getPrenom() . $message);
+
+        return $this->redirectToRoute("vignettes");
+
     }
 
 }

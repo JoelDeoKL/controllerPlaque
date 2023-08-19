@@ -69,11 +69,20 @@
                         <td>{{ vignette.marque }}</td>
                         <td><span class="tag tag-success">{{ vignette.type }}</span></td>
                         <td>{{ vignette.montantImpot }}</td>
-                        <td>{{ vignette.montantTaxe }}</td>
+                        <td>{{ vignette.taxe }}</td>
                         <td>{{ vignette.reference }}</td>
                         <td>
-                          <button type="button" class="btn btn-block btn-dark">Dark</button>
-                          <button type="button" class="btn btn-block btn-dark">Dark</button>
+                          <div class="row">
+                            <div class="col-4">
+                              <a href="{{ path('detailVignette', {id:vignette.id}) }}" class="btn btn-block btn-outline-success">Voir</a>
+                            </div>
+                            <div class="col-4">
+                              <a href="{{ path('editerVignette', {id: vignette.id}) }}" class="btn btn-block btn-outline-info">Modif</a>
+                            </div>
+                            <div class="col-4">
+                              <a href="{{ path('deleteVignette', {id: vignette.id}) }}" class="btn btn-block btn-outline-danger">Suppr</a>
+                            </div>
+                          </div>
                         </td>
                       </tr>
                     {% endfor %}
@@ -85,7 +94,7 @@
             <!-- /.card -->
           </div>
           <div class="col-2">
-            <a href="{{ path('ajouterVignette') }}" class="btn btn-block btn-dark">Ajouter</a>
+            <a href="{{ path('editerVignette') }}" class="btn btn-block btn-dark">Ajouter</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

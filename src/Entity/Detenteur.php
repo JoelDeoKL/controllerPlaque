@@ -336,4 +336,10 @@ class Detenteur
 
         return $this;
     }
+
+    public function __toString()
+    {
+        return $this->plaque;
+    }
+
 }

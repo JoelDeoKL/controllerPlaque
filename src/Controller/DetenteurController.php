@@ -34,8 +34,8 @@ class DetenteurController extends AbstractController
         return $this->render('detenteur/detenteur.html.twig', ['detenteurs' => $detenteurs]);
     }
 
-    #[Route('/ajouterDetenteur/{id?0}', name: 'ajouterDetenteur')]
-    public function ajouterDetenteur(Detenteur $detenteur = null, ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
+    #[Route('/editerDetenteur/{id?0}', name: 'editerDetenteur')]
+    public function editerDetenteur(Detenteur $detenteur = null, ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
     {
         $new = false;
         if(!$detenteur){
@@ -99,4 +99,24 @@ class DetenteurController extends AbstractController
         return $this->render('detenteur/detailDetenteur.html.twig', ['detenteur' => $detenteur]);
     }
 
+    #[Route('/deleteDetenteur/{id?0}', name: 'deleteDetenteur')]
+    public function deleteDetenteur(Detenteur $detenteur = null, ManagerRegistry $doctrine, $id): Response
+    {
+
+        $repository = $doctrine->getRepository(Detenteur::class);
+        $detenteur = $repository->find($id);
+
+        $manager = $doctrine->getManager();
+        $manager->remove($detenteur);
+
+        $manager->flush();
+
+        $message = " a été supprimer avec succès";
+
+
+        $this->addFlash("succes", $detenteur->getPrenom() . $message);
+
+        return $this->redirectToRoute("detenteurs");
+
+    }
 }

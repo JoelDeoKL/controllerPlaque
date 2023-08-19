@@ -25,6 +25,7 @@ class DetenteurController extends AbstractController
     {
         return $this->render('home/simple-results.html.twig');
     }
+
     #[Route('/detenteurs', name: 'detenteurs')]
     public function detenteurs(EntityManagerInterface $entityManager): Response
     {
@@ -88,5 +89,14 @@ class DetenteurController extends AbstractController
         }
     }
 
+    #[Route('/detailDetenteur/{id?0}', name: 'detailDetenteur')]
+    public function detailDetenteur(ManagerRegistry $doctrine, Detenteur $detenteur = null ): Response
+    {
+        if(!$detenteur){
+            $this->addFlash('error', "Ce détenteur n'existe pas !");
+            return $this->redirectToRoute("detenteurs");
+        }
+        return $this->render('detenteur/detailDetenteur.html.twig', ['detenteur' => $detenteur]);
+    }
 
 }

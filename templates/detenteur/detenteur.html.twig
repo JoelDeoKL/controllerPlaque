@@ -68,7 +68,7 @@
                         <td>
                           <div class="row">
                             <div class="col-4">
-                              <a href="" class="btn btn-block btn-outline-success">Voir</a>
+                              <a href="{{ path('detailDetenteur', {id:detenteur.id}) }}" class="btn btn-block btn-outline-success">Voir</a>
                             </div>
                             <div class="col-4">
                               <a href="" class="btn btn-block btn-outline-info">Modif</a>
@@ -88,7 +88,7 @@
             <!-- /.card -->
           </div>
           <div class="col-2">
-            <a href="{{ path('ajouterDetenteur') }}" class="btn btn-block btn-dark">Ajouter</a>
+            <a href="{{ path('ajouterDetenteur') }}" class="btn btn-block btn-primary">Ajouter</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

@@ -1,0 +1,135 @@
+{% extends 'template.html.twig' %}
+
+{% block title %} Controller | Detail Detendeur {% endblock %}
+
+{% block body %}
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Detenteur Detail</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Detenteur</a></li>
+              <li class="breadcrumb-item active">Detenteur Detail</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">Detenteur Detail</h3>
+
+          <div class="card-tools">
+            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+              <i class="fas fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-md-12 col-lg-8 order-2 order-md-1">
+              <div class="row">
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Plaque</span>
+                      <span class="info-box-number text-center text-muted mb-0">{{ detenteur.plaque }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Marque</span>
+                      <span class="info-box-number text-center text-muted mb-0">{{ detenteur.marque }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-4">
+                  <div class="info-box bg-light">
+                    <div class="info-box-content">
+                      <span class="info-box-text text-center text-muted">Catégorie</span>
+                      <span class="info-box-number text-center text-muted mb-0">{{ detenteur.categorie }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-6">
+                  <h4>Identité du Detenteur</h4>
+                    <div class="post">
+                      <div class="user-block">
+                        <img class="img-circle img-bordered-sm" src="{{ asset('uploads/images/') }}{{ detenteur.photo }}" alt="user image">
+                        <span class="username">
+                          <a href="#">{{ detenteur.nom }} {{ detenteur.postnom }} {{ detenteur.prenom }}</a>
+                        </span>
+                        <span class="description">{{ detenteur.adresse }}</span>
+                      </div>
+                      <!-- /.user-block -->
+                      <div class="row">
+                        <div class="col-6">
+                            <p>
+                                <p>Nom : {{ detenteur.nom }}</p>
+                                <p>Postnom : {{ detenteur.postnom }}</p>
+                                <p>Prenom : {{ detenteur.prenom }}</p>
+                                <p>Sexe : {{ detenteur.sexe }}</p>
+                                <p>Adresse : {{ detenteur.adresse }}</p>
+                                <p>Téléphone : {{ detenteur.telephone }}</p>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <img width="270" src="{{ asset('uploads/images/') }}{{ detenteur.photo }}" alt="user image">
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-12 col-lg-4 order-1 order-md-2">
+              <h3 class="text-primary"><i class="fas fa-paint-brush"></i> {{ detenteur.marque }}</h3>
+              <p class="text-muted">{{ detenteur.marque }} {{ detenteur.type }}</p>
+              <br>
+              <div class="text-muted">
+                <p class="text-sm">Catégorie
+                  <b class="d-block">{{ detenteur.categorie }}</b>
+                </p>
+                <p class="text-sm">Poids
+                  <b class="d-block">{{ detenteur.poids }}</b>
+                </p>
+                <p class="text-sm">Couleur
+                  <b class="d-block">{{ detenteur.couleur }}</b>
+                </p>
+                <p class="text-sm">Plaque
+                  <b class="d-block">{{ detenteur.plaque }}</b>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /.card-body -->
+      </div>
+      <!-- /.card -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+  {% endblock %}

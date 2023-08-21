@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Detenteur;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Form\DetenteurType;
+use App\Form\RechercheType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,9 +22,22 @@ class DetenteurController extends AbstractController
     }
 
     #[Route('/', name: 'app_home')]
-    public function controller(): Response
+    public function controller(Request $request, ManagerRegistry $doctrine): Response
     {
-        return $this->render('home/simple-results.html.twig');
+        $form = $this->createForm(RechercheType::class);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $recherche = $form->getData()->getPlaque();
+            $detenteurs = $this->getDoctrine()->getRepository(Detenteur::class)->findBy(["plaque" => $recherche]);
+        }else{
+            $detenteurs = [];
+        }
+
+        return $this->render('home/simple-results.html.twig', [
+            'form' => $form->createView(),
+            'detenteurs' => $detenteurs,
+        ]);
     }
 
     #[Route('/detenteurs', name: 'detenteurs')]

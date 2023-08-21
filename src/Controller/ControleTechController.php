@@ -21,13 +21,13 @@ class ControleTechController extends AbstractController
         return $this->render('controleTech/controleTech.html.twig', ['controleTech' => $controleTech]);
     }
 
-    #[Route('/ajouterAssurance/{id?0}', name: 'ajouterAssurance')]
-    public function ajouterAssurance(Assurance $assurance = null, ManagerRegistry $doctrine, Request $request): Response
+    #[Route('/editerControleTech/{id?0}', name: 'editerControleTech')]
+    public function editerControleTech(Assurance $assurance = null, ManagerRegistry $doctrine, Request $request): Response
     {
         $new = false;
         if(!$assurance){
             $new = true;
-            $assurance = new Assurance();
+            $assurance = new ControleTech();
         }
 
         $form = $this->createForm(AssuranceType::class, $assurance);
@@ -50,7 +50,7 @@ class ControleTechController extends AbstractController
 
             return $this->redirectToRoute("assurances");
         }else{
-            return $this->render('assurance/addAssurance.html.twig', [
+            return $this->render('controleTeh/addAssurance.html.twig', [
                 'form' => $form->createView()
             ]);
         }

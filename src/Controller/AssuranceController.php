@@ -22,8 +22,8 @@ class AssuranceController extends AbstractController
         return $this->render('assurance/assurance.html.twig', ['assurances' => $assurances]);
     }
 
-    #[Route('/ajouterAssurance/{id?0}', name: 'ajouterAssurance')]
-    public function ajouterAssurance(Assurance $assurance = null, ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
+    #[Route('/editerAssurance/{id?0}', name: 'editerAssurance')]
+    public function editerAssurance(Assurance $assurance = null, ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
     {
         $new = false;
         if(!$assurance){
@@ -55,6 +55,36 @@ class AssuranceController extends AbstractController
                 'form' => $form->createView()
             ]);
         }
+    }
+
+    #[Route('/detailAssurance/{id?0}', name: 'detailAssurance')]
+    public function detailAssurancce(ManagerRegistry $doctrine, Assurance $assurance = null ): Response
+    {
+        if(!$assurance){
+            $this->addFlash('error', "L'assurance n'existe pas !");
+            return $this->redirectToRoute("assurances");
+        }
+        return $this->render('assurance/detailAssurance.html.twig', ['assurance' => $assurance]);
+    }
+
+    #[Route('/deleteAssurance/{id?0}', name: 'deleteAssurance')]
+    public function deleteAssurance(Assurance $assurance = null, ManagerRegistry $doctrine, $id): Response
+    {
+
+        $repository = $doctrine->getRepository(Assurance::class);
+        $assurance = $repository->find($id);
+
+        $manager = $doctrine->getManager();
+        $manager->remove($assurance);
+
+        $manager->flush();
+
+        $message = "L'assurance a été supprimer avec succès";
+
+        $this->addFlash("succes", $message);
+
+        return $this->redirectToRoute("assurances");
+
     }
 
 }

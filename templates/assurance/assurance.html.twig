@@ -68,8 +68,17 @@
                         <td><span class="tag tag-success">{{ assurance.marque }}</span></td>
                         <td>{{ assurance.ttr }}</td>
                         <td>
-                          <button type="button" class="btn btn-block btn-dark">Dark</button>
-                          <button type="button" class="btn btn-block btn-dark">Dark</button>
+                          <div class="row">
+                            <div class="col-4">
+                              <a href="{{ path('detailAssurance', {id:assurance.id}) }}" class="btn btn-block btn-outline-success">Voir</a>
+                            </div>
+                            <div class="col-4">
+                              <a href="{{ path('editerAssurance', {id: assurance.id}) }}" class="btn btn-block btn-outline-info">Modif</a>
+                            </div>
+                            <div class="col-4">
+                              <a href="{{ path('deleteAssurance', {id: assurance.id}) }}" class="btn btn-block btn-outline-danger">Suppr</a>
+                            </div>
+                          </div>
                         </td>
                       </tr>
                     {% endfor %}
@@ -81,7 +90,7 @@
             <!-- /.card -->
           </div>
           <div class="col-2">
-            <button type="button" class="btn btn-block btn-dark">Ajouter</button>
+            <a href="{{ path('editerAssurance') }}" class="btn btn-block btn-primary">Ajouter</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

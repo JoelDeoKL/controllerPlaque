@@ -105,10 +105,35 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                <label for="dateNaissance">Date Echéance</label>
-                                <input type="date" class="form-control" id="dateNaissance">
+                                {{ form_label(form.echeance) }}
+                                {{ form_widget(form.echeance, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez Echeance'
+                                }}) }}
                             </div>
                         </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.ttr) }}
+                                {{ form_widget(form.ttr, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le nombre'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.chassis) }}
+                                {{ form_widget(form.chassis, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez la chassis'
+                                }}) }}
+                            </div>
+                        </div>
+                       
                     </div>
 
                 </div>

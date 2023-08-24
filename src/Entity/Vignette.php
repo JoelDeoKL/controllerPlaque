@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\VignetteRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: VignetteRepository::class)]
@@ -33,6 +34,9 @@ class Vignette
 
     #[ORM\ManyToOne(inversedBy: 'vignettes')]
     private ?Detenteur $numPlaque = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $date_expiration = null;
 
     public function getId(): ?int
     {
@@ -123,6 +127,16 @@ class Vignette
         return $this;
     }
 
+    public function getDateExpiration(): ?\DateTimeInterface
+    {
+        return $this->date_expiration;
+    }
 
-        
+    public function setDateExpiration(\DateTimeInterface $date_expiration): static
+    {
+        $this->date_expiration = $date_expiration;
+
+        return $this;
+    }
+
 }

@@ -22,14 +22,15 @@ class DetenteurController extends AbstractController
     }
 
     #[Route('/', name: 'app_home')]
-    public function controller(Request $request, ManagerRegistry $doctrine): Response
+    public function controller(Request $request, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(RechercheType::class);
         $form->handleRequest($request);
         
-        if($form->isSubmitted() && $form->isValid()){
+        if($form->isSubmitted()){
             $recherche = $form->getData()->getPlaque();
-            $detenteurs = $this->getDoctrine()->getRepository(Detenteur::class)->findBy(["plaque" => $recherche]);
+            $detenteurs = $entityManager->getRepository(Detenteur::class)->findBy(["plaque" => $recherche]);
+            
         }else{
             $detenteurs = [];
         }

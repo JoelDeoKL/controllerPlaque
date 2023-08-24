@@ -152,13 +152,14 @@
                         <div class="list-group-item">
                             <div class="row">
                                 <div class="col-auto">
-                                    <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo" style="max-height: 160px;">
+                                    <img class="img-fluid" src="{{ asset('uploads/images/') }}{{ detenteur.photo }}"   alt="Photo" style="max-height: 160px;">
                                 </div>
                                 <div class="col px-4">
                                     <div>
                                         <div class="float-right">{{ detenteur.plaque }}</div>
                                         <h3>{{ detenteur.plaque }}</h3>
-                                        <p class="mb-0">{{ detenteur.plaque }}</p>
+                                        <p class="mb-0">Nom : {{ detenteur.nom }} {{ detenteur.postnom }} {{ detenteur.prenom }}</p>
+                                        <p class="mb-0">Assurance : {{ detenteur.assurance }}</p>
                                     </div>
                                 </div>
                             </div>

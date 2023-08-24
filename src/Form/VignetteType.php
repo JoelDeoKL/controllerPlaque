@@ -16,6 +16,7 @@ class VignetteType extends AbstractType
             ->add('code')
             ->add('numPlaque')
             ->add('marque')
+            ->add('date_expiration')
             ->add('type')
             ->add('montantImpot')
             ->add('taxe')

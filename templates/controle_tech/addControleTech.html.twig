@@ -1,6 +1,6 @@
  {% extends 'template.html.twig' %}
 
-{% block title %} Controller | Assurances {% endblock %}
+{% block title %} Controller | Controlle Technique {% endblock %}
 
 {% block body %}
  
@@ -11,7 +11,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Formulaire d'ajout de assurance</h1>
+            <h1>Formulaire d'ajout de Controlle Technique</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
@@ -32,7 +32,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Ajouter Assurance</h3>
+                <h3 class="card-title">Ajouter Un controlle</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -51,39 +51,6 @@
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                {{ form_label(form.numAgreement) }}
-                                {{ form_widget(form.numAgreement, {'attr': {
-                                    'class':'required form-control',
-                                    'placeholder' : 'Entrez le numéro Agréement'
-                                }}) }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
-                                {{ form_label(form.numPolice) }}
-                                {{ form_widget(form.numPolice, {'attr': {
-                                    'class':'required form-control',
-                                    'placeholder' : 'Entrez le numero de la Police'
-                                }}) }}
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="form-group">
-                                {{ form_label(form.type) }}
-                                {{ form_widget(form.type, {'attr': {
-                                    'class':'required form-control',
-                                    'placeholder' : 'Entrez votre type'
-                                }}) }}
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-6">
-                            <div class="form-group">
                                 {{ form_label(form.marque) }}
                                 {{ form_widget(form.marque, {'attr': {
                                     'class':'required form-control',
@@ -91,12 +58,24 @@
                                 }}) }}
                             </div>
                         </div>
+                    </div>
+
+                    <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                {{ form_label(form.aneeFab) }}
-                                {{ form_widget(form.aneeFab, {'attr': {
+                                {{ form_label(form.type) }}
+                                {{ form_widget(form.type, {'attr': {
                                     'class':'required form-control',
-                                    'placeholder' : 'Entrez Année de fabrication'
+                                    'placeholder' : 'Entrez le type'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.modele) }}
+                                {{ form_widget(form.modele, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre le modele'
                                 }}) }}
                             </div>
                         </div>
@@ -105,19 +84,19 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                {{ form_label(form.echeance) }}
-                                {{ form_widget(form.echeance, {'attr': {
+                                {{ form_label(form.miseCirculation) }}
+                                {{ form_widget(form.miseCirculation, {'attr': {
                                     'class':'required form-control',
-                                    'placeholder' : 'Entrez Echeance'
+                                    'placeholder' : 'Entrez la mise en circulation'
                                 }}) }}
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="form-group">
-                                {{ form_label(form.ttr) }}
-                                {{ form_widget(form.ttr, {'attr': {
+                                {{ form_label(form.numChassis) }}
+                                {{ form_widget(form.numChassis, {'attr': {
                                     'class':'required form-control',
-                                    'placeholder' : 'Entrez le nombre'
+                                    'placeholder' : 'Entrez le numéro de la chassis'
                                 }}) }}
                             </div>
                         </div>
@@ -126,14 +105,22 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="form-group">
-                                {{ form_label(form.chassis) }}
-                                {{ form_widget(form.chassis, {'attr': {
+                                {{ form_label(form.date_delivrance) }}
+                                {{ form_widget(form.date_delivrance, {'attr': {
                                     'class':'required form-control',
-                                    'placeholder' : 'Entrez la chassis'
+                                    'placeholder' : 'Entrez la date'
                                 }}) }}
                             </div>
                         </div>
-                       
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.date_expiration) }}
+                                {{ form_widget(form.date_expiration, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le daate'
+                                }}) }}
+                            </div>
+                        </div>
                     </div>
 
                 </div>

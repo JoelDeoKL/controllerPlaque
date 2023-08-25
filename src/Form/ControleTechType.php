@@ -6,6 +6,7 @@ use App\Entity\ControleTech;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class ControleTechType extends AbstractType
 {
@@ -20,6 +21,7 @@ class ControleTechType extends AbstractType
             ->add('date_delivrance')
             ->add('date_expiration')
             ->add('numPlaque')
+            ->add('editer', SubmitType::class)
         ;
     }
 

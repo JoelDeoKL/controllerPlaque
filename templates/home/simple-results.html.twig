@@ -158,8 +158,31 @@
                                     <div>
                                         <div class="float-right">{{ detenteur.plaque }}</div>
                                         <h3>{{ detenteur.plaque }}</h3>
-                                        <p class="mb-0">Nom : {{ detenteur.nom }} {{ detenteur.postnom }} {{ detenteur.prenom }}</p>
-                                        <p class="mb-0">Assurance : {{ detenteur.assurance }}</p>
+                                        <strong>
+                                          <p class="mb-0">Nom : {{ detenteur.nom }} {{ detenteur.postnom }} {{ detenteur.prenom }}</p>
+                                          <p class="mb-0">Assurance :
+                                            {% if assurances is empty %}
+                                              <em style="color:red">NON EN ORDRE</em>
+                                            {% else %}
+                                             <em style="color:green"> Echéance le {{ assurances[0].echeance|date('d/m/Y') }} </em>
+                                            {% endif %}
+                                          </p>
+                                          <p class="mb-0">Controle Techenique :
+                                            {% if controleTechs is empty %}
+                                              <em style="color:red">NON EN ORDRE</em>
+                                            {% else %}
+                                              <em style="color:green">Expiration le {{ controleTechs[0].dateExpiration|date('d/m/Y') }}</em>
+                                            {% endif %}
+                                          </p>
+                                          <p class="mb-0">Vignette : 
+                                            {% if vignettes is empty %}
+                                              <em style="color:red">NON EN ORDRE</em>
+                                            {% else %}
+                                              <em style="color:green">Expiration le {{ vignettes[0].dateExpiration|date('d/m/Y') }}</em>
+                                            {% endif %}
+                                          </p>
+                                          
+                                        </strong>
                                     </div>
                                 </div>
                             </div>

@@ -71,7 +71,7 @@
               </div>
               <div class="row">
                 <div class="col-6">
-                  <h4>Details de l'Controle Technique</h4>
+                  <h4>Details du Controle Technique</h4>
                     <div class="post">
                       <div class="user-block">
                         <span class="username">
@@ -87,9 +87,9 @@
                                 <p>Modèle du véhicule : {{ controleTech.modele }}</p>
                                 <p>Mise en circulation : {{ controleTech.miseCirculation }}</p>
                                 <p>Numéro de la plaque : {{ controleTech.numPlaque }}</p>
-                                <p>Numéro de la Chassis : {{ controleTech.chassis }}</p>
+                                <p>Numéro de la Chassis : {{ controleTech.numChassis }}</p>
                                 <p>Date de délivrance : {{ controleTech.dateDelivrance|date('d/m/Y') }}</p>
-                                <p>Date d'expiration : {{ controleTech.dateExpiraion|date('d/m/Y') }}</p> 
+                                <p>Date d'expiration : {{ controleTech.dateExpiration|date('d/m/Y') }}</p> 
                             </p>
                         </div>
                       </div>
@@ -102,17 +102,17 @@
               <p class="text-muted">{{ controleTech.marque }} {{ controleTech.type }}</p>
               <br>
               <div class="text-muted">
-                <p class="text-sm">Num agréement
-                  <b class="d-block">{{ controleTech.numAgreement }}</b>
+                <p class="text-sm">Numéro de la Plaque
+                  <b class="d-block">{{ controleTech.numPlaque }}</b>
                 </p>
-                <p class="text-sm">TTR
-                  <b class="d-block">{{ controleTech.ttr }}</b>
+                <p class="text-sm">Mise en circulation
+                  <b class="d-block">{{ controleTech.miseCirculation }}</b>
                 </p>
-                <p class="text-sm">Num Police
-                  <b class="d-block">{{ controleTech.numPolice }}</b>
+                <p class="text-sm">Date de délivrance
+                  <b class="d-block">{{ controleTech.dateDelivrance|date('d/m/Y') }}</b>
                 </p>
-                <p class="text-sm">Chassis
-                  <b class="d-block">{{ controleTech.chassis }}</b>
+                <p class="text-sm">Date d'expiration
+                  <b class="d-block">{{ controleTech.dateExpiration|date('d/m/Y') }}</b>
                 </p>
               </div>
             </div>

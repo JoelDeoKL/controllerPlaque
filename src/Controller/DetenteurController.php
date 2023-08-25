@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Detenteur;
+use App\Entity\Vignette;
+use App\Entity\ControleTech;
+use App\Entity\Assurance;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Form\DetenteurType;
 use App\Form\RechercheType;
@@ -29,15 +32,27 @@ class DetenteurController extends AbstractController
         
         if($form->isSubmitted()){
             $recherche = $form->getData()->getPlaque();
+
             $detenteurs = $entityManager->getRepository(Detenteur::class)->findBy(["plaque" => $recherche]);
-            
+
+            $assurances = $entityManager->getRepository(Assurance::class)->findBy(["numPlaque" => $detenteurs[0]->getId()]);
+
+            $controleTechs = $entityManager->getRepository(ControleTech::class)->findBy(["numPlaque" => $detenteurs[0]->getId()]);
+
+            $vignettes = $entityManager->getRepository(Vignette::class)->findBy(["numPlaque" => $detenteurs[0]->getId()]);
         }else{
             $detenteurs = [];
+            $controleTechs = [];
+            $vignettes = [];
+            $assurances = [];
         }
 
         return $this->render('home/simple-results.html.twig', [
             'form' => $form->createView(),
             'detenteurs' => $detenteurs,
+            'vignettes' => $vignettes,
+            'controleTechs' =>$controleTechs,
+            'assurances' => $assurances,
         ]);
     }
 

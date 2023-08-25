@@ -1,6 +1,6 @@
 {% extends 'template.html.twig' %}
 
-{% block title %} Controller | Assurances {% endblock %}
+{% block title %} Controller | Controlle Technique {% endblock %}
 
 {% block body %}
 
@@ -12,12 +12,12 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Liste des Assurances</h1>
+            <h1>Liste des Controlles Techniques</h1>
           </div>
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Assurances</li>
+              <li class="breadcrumb-item active">Controlle Technique</li>
             </ol>
           </div>
         </div>
@@ -32,7 +32,7 @@
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Liste des assurances</h3>
+                <h3 class="card-title">Liste des controlles techniques</h3>
 
                 <div class="card-tools">
                   <div class="input-group input-group-sm" style="width: 150px;">
@@ -52,31 +52,31 @@
                   <thead>
                     <tr>
                       <th>Num Plaque</th>
-                      <th>Num Agréement</th>
-                      <th>Num Police</th>
                       <th>Marque</th>
-                      <th>TTR</th>
+                      <th>Type</th>
+                      <th>Modèle</th>
+                      <th>Mise en circulation</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {% for assurance in assurances %}
+                    {% for controleTech in controleTechs %}
                       <tr>
-                        <td>{{ assurance.numPlaque }}</td>
-                        <td>{{ assurance.numAgreement }}</td>
-                        <td>{{ assurance.numPolice }}</td>
-                        <td><span class="tag tag-success">{{ assurance.marque }}</span></td>
-                        <td>{{ assurance.ttr }}</td>
+                        <td>{{ controleTech.numPlaque }}</td>
+                        <td>{{ controleTech.marque }}</td>
+                        <td>{{ controleTech.type }}</td>
+                        <td><span class="tag tag-success">{{ controleTech.modele }}</span></td>
+                        <td>{{ controleTech.miseCirculation }}</td>
                         <td>
                           <div class="row">
                             <div class="col-4">
-                              <a href="{{ path('detailAssurance', {id:assurance.id}) }}" class="btn btn-block btn-outline-success">Voir</a>
+                              <a href="{{ path('detailControleTech', {id:controleTech.id}) }}" class="btn btn-block btn-outline-success">Voir</a>
                             </div>
                             <div class="col-4">
-                              <a href="{{ path('editerAssurance', {id: assurance.id}) }}" class="btn btn-block btn-outline-info">Modif</a>
+                              <a href="{{ path('editerControleTech', {id: controleTech.id}) }}" class="btn btn-block btn-outline-info">Modif</a>
                             </div>
                             <div class="col-4">
-                              <a href="{{ path('deleteAssurance', {id: assurance.id}) }}" class="btn btn-block btn-outline-danger">Suppr</a>
+                              <a href="{{ path('deleteControleTech', {id: controleTech.id}) }}" class="btn btn-block btn-outline-danger">Suppr</a>
                             </div>
                           </div>
                         </td>
@@ -90,7 +90,7 @@
             <!-- /.card -->
           </div>
           <div class="col-2">
-            <a href="{{ path('editerAssurance') }}" class="btn btn-block btn-primary">Ajouter</a>
+            <a href="{{ path('editerControleTech') }}" class="btn btn-block btn-primary">Ajouter</a>
           </div>
         </div>
       </div><!-- /.container-fluid -->

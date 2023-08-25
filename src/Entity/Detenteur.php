@@ -67,11 +67,15 @@ class Detenteur
     #[ORM\OneToMany(mappedBy: 'numPlaque', targetEntity: ControleTech::class)]
     private Collection $controleTeches;
 
+    #[ORM\OneToMany(mappedBy: 'numPlaque', targetEntity: CarteCrise::class)]
+    private Collection $carteCrises;
+
     public function __construct()
     {
         $this->vignettes = new ArrayCollection();
         $this->assurances = new ArrayCollection();
         $this->controleTeches = new ArrayCollection();
+        $this->carteCrises = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -340,6 +344,36 @@ class Detenteur
     public function __toString()
     {
         return $this->plaque;
+    }
+
+    /**
+     * @return Collection<int, CarteCrise>
+     */
+    public function getCarteCrises(): Collection
+    {
+        return $this->carteCrises;
+    }
+
+    public function addCarteCrisis(CarteCrise $carteCrisis): static
+    {
+        if (!$this->carteCrises->contains($carteCrisis)) {
+            $this->carteCrises->add($carteCrisis);
+            $carteCrisis->setNumPlaque($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteCrisis(CarteCrise $carteCrisis): static
+    {
+        if ($this->carteCrises->removeElement($carteCrisis)) {
+            // set the owning side to null (unless already changed)
+            if ($carteCrisis->getNumPlaque() === $this) {
+                $carteCrisis->setNumPlaque(null);
+            }
+        }
+
+        return $this;
     }
 
 }

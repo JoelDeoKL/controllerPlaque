@@ -7,19 +7,22 @@ use App\Form\CarteCriseType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 class CarteCriseController extends AbstractController
 {
-    #[Route('/carte_crise', name: 'carteCrises')]
-    public function carteCrises(EntityManagerInterface $entityManager): Response
+    #[Route('/carte_grise', name: 'carteGrises')]
+    public function carteGrises(EntityManagerInterface $entityManager): Response
     {
         $carteCrises = $entityManager->getRepository(CarteCrise::class)->findAll();
 
-        return $this->render('carteCrise/carteCrise.html.twig', ['carteCrises' => $carteCrises]);
+        return $this->render('carte_crise/carteCrise.html.twig', ['carteCrises' => $carteCrises]);
     }
 
-    #[Route('/editerCarteCrise/{id?0}', name: 'editerCarteCrise')]
-    public function editerCarteCrise(CarteCrise $carteCrise = null, ManagerRegistry $doctrine, Request $request, SluggerInterface $slugger): Response
+    #[Route('/editerCarteGrise/{id?0}', name: 'editerCarteGrise')]
+    public function editerCarteGrise(CarteCrise $carteCrise = null, ManagerRegistry $doctrine, Request $request): Response
     {
         $new = false;
         if(!$carteCrise){
@@ -45,22 +48,22 @@ class CarteCriseController extends AbstractController
 
             $this->addFlash("succes", $message);
 
-            return $this->redirectToRoute("carteCrises");
+            return $this->redirectToRoute("carteGrises");
         }else{
-            return $this->render('carteCrise/addDetenteur.html.twig', [
+            return $this->render('carte_crise/addCarteCrise.html.twig', [
                 'form' => $form->createView()
             ]);
         }
     }
 
-    #[Route('/detailCarteCrise/{id?0}', name: 'detailCarteCrise')]
-    public function detailCarteCrise(ManagerRegistry $doctrine, CarteCrise $carteCrise = null ): Response
+    #[Route('/detailCarteGrise/{id?0}', name: 'detailCarteGrise')]
+    public function detailCarteGrise(ManagerRegistry $doctrine, CarteCrise $carteCrise = null ): Response
     {
         if(!$carteCrise){
             $this->addFlash('error', "Cette carte n'existe pas !");
             return $this->redirectToRoute("carteCrises");
         }
-        return $this->render('carteCrise/detailCarteCrise.html.twig', ['carteCrise' => $carteCrise]);
+        return $this->render('carte_crise/detailCarteCrise.html.twig', ['carteCrise' => $carteCrise]);
     }
 
     #[Route('/deleteCarteCrise/{id?0}', name: 'deleteCarteCrise')]

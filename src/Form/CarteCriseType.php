@@ -6,6 +6,7 @@ use App\Entity\CarteCrise;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CarteCriseType extends AbstractType
 {
@@ -19,6 +20,7 @@ class CarteCriseType extends AbstractType
             ->add('typeUsage')
             ->add('dateDelivrance')
             ->add('numPlaque')
+            ->add('editer', SubmitType::class)
         ;
     }
 

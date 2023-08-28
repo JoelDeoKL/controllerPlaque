@@ -1,0 +1,137 @@
+ {% extends 'template.html.twig' %}
+
+{% block title %} Controller | Carte Grise {% endblock %}
+
+{% block body %}
+ 
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1>Formulaire d'ajout de carte grise</h1>
+          </div>
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Formulaire</li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+          <!-- left column -->
+          <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="card card-primary">
+              <div class="card-header">
+                <h3 class="card-title">Ajouter Carte Assurance</h3>
+              </div>
+              <!-- /.card-header -->
+              <!-- form start -->
+              {{ form_start(form) }}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.numPlaque) }}
+                                {{ form_widget(form.numPlaque, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le numero de la plaque'
+                                }}) }}
+                                
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.noms) }}
+                                {{ form_widget(form.noms, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre noms complet'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.adresse) }}
+                                {{ form_widget(form.adresse, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez votre adresse'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.dateMiseCirculation) }}
+                                {{ form_widget(form.dateMiseCirculation, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez la date mise circulation'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.typeUsage) }}
+                                {{ form_widget(form.typeUsage, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le type d\'usage'
+                                }}) }}
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.dateDelivrance) }}
+                                {{ form_widget(form.dateDelivrance, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez la date de délivrance'
+                                }}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                {{ form_label(form.numImpot) }}
+                                {{ form_widget(form.numImpot, {'attr': {
+                                    'class':'required form-control',
+                                    'placeholder' : 'Entrez le numero de l\'impot'
+                                }}) }}
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+
+                <div class="card-footer"> 
+                    {{ form_widget(form.editer, {'attr': {'class':'btn btn-primary'}}) }}
+                </div>
+              
+            </div>
+            <!-- /.card -->
+
+          </div>
+          <!--/.col (right) -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+  </div>
+  
+{% endblock %}

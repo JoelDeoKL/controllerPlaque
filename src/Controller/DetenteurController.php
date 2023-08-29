@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Detenteur;
 use App\Entity\Vignette;
 use App\Entity\ControleTech;
+use App\Entity\CarteCrise;
 use App\Entity\Assurance;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Form\DetenteurType;
@@ -37,6 +38,8 @@ class DetenteurController extends AbstractController
 
             $assurances = $entityManager->getRepository(Assurance::class)->findBy(["numPlaque" => $detenteurs[0]->getId()]);
 
+            $carteGrises = $entityManager->getRepository(CarteCrise::class)->findBy(["numPlaque" => $detenteurs[0]->getId()]);
+
             $controleTechs = $entityManager->getRepository(ControleTech::class)->findBy(["numPlaque" => $detenteurs[0]->getId()]);
 
             $vignettes = $entityManager->getRepository(Vignette::class)->findBy(["numPlaque" => $detenteurs[0]->getId()]);
@@ -45,6 +48,7 @@ class DetenteurController extends AbstractController
             $controleTechs = [];
             $vignettes = [];
             $assurances = [];
+            $carteGrises = [];
         }
 
         return $this->render('home/simple-results.html.twig', [
@@ -53,6 +57,7 @@ class DetenteurController extends AbstractController
             'vignettes' => $vignettes,
             'controleTechs' =>$controleTechs,
             'assurances' => $assurances,
+            'carteGrises' => $carteGrises,
         ]);
     }
 

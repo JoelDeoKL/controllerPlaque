@@ -181,6 +181,13 @@
                                               <em style="color:green">Expiration le {{ vignettes[0].dateExpiration|date('d/m/Y') }}</em>
                                             {% endif %}
                                           </p>
+                                          <p class="mb-0">Carte Grise : 
+                                            {% if carteGrises is empty %}
+                                              <em style="color:red">NON EN ORDRE</em>
+                                            {% else %}
+                                              <em style="color:green">Date délivrance le {{ carteGrises[0].dateDelivrance|date('d/m/Y') }}</em>
+                                            {% endif %}
+                                          </p>
                                           
                                         </strong>
                                     </div>
